@@ -1,12 +1,25 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+import datetime
 
-tasks = ['Go to street walk', 'Go to work', 'By present']
+from .models import Task
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'task/index.html', {'tasks': tasks, 'title': 'Task Page'})
+    tasks = Task.objects.all()
+    return render(request, 'task/index.html', {'tasks': tasks, 'title': 'Tasks'})
+
+
+def show_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+
+    context = {
+        'task': task,
+        'time': datetime.datetime.now(),
+    }
+
+    return render(request, 'task/task.html', context=context)
 
 
 def about(request):
