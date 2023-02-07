@@ -3,5 +3,9 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def index(request):
-    return HttpResponse('I am User app')
+def register(request):
+    return render(request, 'user/register.html')
+
+
+def login(request):
+    return render(request, 'user/login.html')
