@@ -11,7 +11,6 @@
             </div>
             {% for t in tasks %}
             <h3 class="fs-2">{{ t.title }}</h3>
-            <p>{{ t.description }}</p>
             <a href="{% url 'task' t.pk %}" class="icon-link d-inline-flex align-items-center">
                 Detail
                 <svg class="bi" width="1em" height="1em">
