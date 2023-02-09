@@ -20,22 +20,32 @@
             </svg>
             LOG
         </a>
-
+        {% if request.user.is_authenticated %}
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-secondary">Task list</a></li>
         </ul>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'add_task' %}" class="nav-link px-2 link-secondary">Add new task</a></li>
         </ul>
+        {% else %}
+        <p><b> for full functional you mast login </b></p>
+        {% endif %}
 
         <div class="col-md-3 text-end">
-            <a href="{% url 'login' %}">
+            {% if request.user.is_authenticated %}
+            <p>{{user.username}} |
+                <a href="{% url 'logout_user' %}">
+                    <button type="button" class="btn btn-primary me-2">EXIT</button>
+                </a>
+            </p>
+            {% else %}
+            <a href="{% url 'login_view' %}">
                 <button type="button" class="btn btn-outline-primary me-2">Login</button>
             </a>
             <a href="{% url 'register' %}">
                 <button type="button" class="btn btn-primary">Sign-up</button>
             </a>
-
+            {% endif %}
         </div>
     </header>
 </div>
