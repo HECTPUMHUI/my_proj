@@ -1,7 +1,26 @@
 {% extends 'task/base.html' %}
 
 {% block content %}
+<!-- category line -->
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        {% if cat_selected == 0 %}
+            <li class="selected">All Category</li>
+        {% else %}
+            <li><a href="{% url 'index' %}">All Category</a></li>
+        {% endif %}
 
+        {% for c in cats %}
+            {% if c.pk == cat_selected %}
+                <li class="selected">{{ c.name }}</li>
+            {% else %}
+                <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+    </header>
+</div>
+<!-- category line end -->
 <div class="container px-4 py-5" id="featured-3">
     <!--    <h2 class="pb-2 border-bottom">OUR TASKS</h2>-->
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">

@@ -9,9 +9,10 @@
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
             </div>
             <h3 class="fs-2">{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <p>{{ task.created|date:"d-m-Y H:i:s"}}</p>
-            <p>{{ task.completed }}</p>
+            <p><b>Description:</b> {{ task.description }}</p>
+            <p><b>Created:</b> {{ task.created|date:"d-m-Y H:i:s"}}</p>
+            <p><b>Category:</b> {{ task.cat }}</p>
+            <p><b>Status:</b> {{ task.completed }}</p>
             <a href="/" class="icon-link d-inline-flex align-items-center">
                 Task list
                 <svg class="bi" width="1em" height="1em">
