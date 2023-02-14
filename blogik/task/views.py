@@ -1,20 +1,11 @@
-from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import Http404
+from django.shortcuts import render, redirect
 
-from django.views.generic import ListView, DetailView, CreateView
-
+from django.views.generic import DetailView
 from .forms import AddTaskForm
 from .models import Task, Category
 
 
-# class Blog(ListView):
-#     model = Task
-#     template_name = 'task/index.html'
-#     context_object_name = 'tasks'
-#     extra_context = {'title': 'Task List'}
-#
-#     def get_queryset(self):
-#         return Task.objects.filter(completed=True)
 def index(request):
     tasks = Task.objects.all()
     cats = Category.objects.all()
