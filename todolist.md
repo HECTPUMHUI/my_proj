@@ -1,0 +1,3 @@
+- ~~creating add task opportunity.~~
+- make authentication for user.
+- make two category (completed/pending)
