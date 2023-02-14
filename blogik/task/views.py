@@ -1,10 +1,6 @@
-from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-import datetime
-from django.contrib.auth.forms import UserCreationForm
 
-from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
 from .forms import AddTaskForm
