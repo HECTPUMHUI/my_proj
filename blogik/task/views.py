@@ -3,16 +3,48 @@ from django.shortcuts import render, redirect
 
 from django.views.generic import DetailView
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .forms import AddTaskForm
 from .models import Task, Category
 from task.serializers import TaskSerializer, UserSerializer
 
 
-class TaskAPIView(generics.ListAPIView):
+class TaskAPIList(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+
+class TaskAPIUpdate(generics.UpdateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+
+class TaskAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+# class TaskAPIView(APIView):
+#     def get(self, request):
+#         t = Task.objects.all()
+#         return Response({'tasks': TaskSerializer(t, many=True).data})
+#
+#     def post(self, request):
+#         serializer = TaskSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#
+#         task_new = Task.objects.create(
+#             title=request.data['title'],
+#             description=request.data['description'],
+#             cat_id=request.data['cat_id']
+#         )
+#
+#         return Response({'task': TaskSerializer(task_new).data})
+
+# class TaskAPIView(generics.ListAPIView):
+#     queryset = Task.objects.all()
+#     serializer_class = TaskSerializer
 
 
 # def index(request):
