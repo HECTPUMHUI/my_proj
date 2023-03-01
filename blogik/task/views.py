@@ -16,33 +16,16 @@ class TaskAPIList(generics.ListCreateAPIView):
     serializer_class = TaskSerializer
 
 
-class TaskAPIUpdate(generics.UpdateAPIView):
+class TaskAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
-class TaskAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+class TaskAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
-# class TaskAPIView(APIView):
-#     def get(self, request):
-#         t = Task.objects.all()
-#         return Response({'tasks': TaskSerializer(t, many=True).data})
-#
-#     def post(self, request):
-#         serializer = TaskSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#
-#         task_new = Task.objects.create(
-#             title=request.data['title'],
-#             description=request.data['description'],
-#             cat_id=request.data['cat_id']
-#         )
-#
-#         return Response({'task': TaskSerializer(task_new).data})
-
-# class TaskAPIView(generics.ListAPIView):
+# class TaskAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = Task.objects.all()
 #     serializer_class = TaskSerializer
 
