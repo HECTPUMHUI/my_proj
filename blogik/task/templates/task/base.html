@@ -32,7 +32,7 @@
         {% endif %}
 
         <div class="col-md-3 text-end">
-            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
             <p>{{user.username}} |
                 <a href="{% url 'logout_user' %}">
                     <button type="button" class="btn btn-primary me-2">EXIT</button>

@@ -1,6 +1,19 @@
 from django.shortcuts import render, redirect
+from rest_framework import generics
+
+from task.serializers import UserSerializer
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
+
+from .models import User
+
+
+class UserAPIView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+#
 
 
 def register(request):
